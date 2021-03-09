@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-alpine
+  labels:
+    label: my-alpine-terminal
+spec:
+  containers:
+    - name: my-alpine
+      image:  alpine
+      command: 
+      - cat
+      tty: true
+

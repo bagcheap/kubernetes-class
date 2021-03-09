@@ -1,14 +1,23 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: my-alpine
+  name: my-alpine-deployment
   labels:
-    label: my-alpine-terminal
+    label: my-alpine
 spec:
-  containers:
-    - name: my-alpine
-      image:  alpine
-      command: 
-      - cat
-      tty: true
+  selector:
+    matchLabels:
+      app: my-alpine
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-alpine
+    spec:
+      containers:
+        - name: my-alpine
+          image:  alpine
+          command: 
+          - cat
+          tty: true
 
